@@ -1,0 +1,97 @@
+libgazebo9-dev:
+  osx:
+    homebrew:
+      packages: [gazebo9]
+gazebo9:
+  osx:
+    homebrew:
+      packages: [gazebo9]
+python-gnupg:
+  osx:
+    pip:
+      packages: [gpg]
+python3:
+  osx:
+    homebrew:
+      packages: [python]
+python3-yaml:
+  osx:
+    pip:
+      packages: [PyYaml]
+python3-catkin-pkg:
+  osx:
+    pip:
+      packages: [catkin-pkg]
+python3-empy:
+  osx:
+    pip:
+      packages: [empy]
+python3-coverage:
+  osx:
+    pip:
+      packages: [coverage]
+python3-mock:
+  osx:
+    pip:
+      packages: [mock]
+python3-rosdep:
+  osx:
+    pip:
+      packages: [rosdep]
+google-mock:
+  osx:
+    homebrew:
+      packages: [gtest]
+python-wxtools:
+  osx:
+    pip:
+      packages: [wxpython]
+python3-nose:
+  osx:
+    pip:
+      packages: [nose]
+libgpgme-dev:
+  osx:
+    homebrew:
+      packages: [gpgme]
+libqt5-core:
+  osx:
+    homebrew:
+      packages: []
+libqt5-gui:
+  osx:
+    homebrew:
+      packages: []
+libqt5-opengl:
+  osx:
+    homebrew:
+      packages: []
+libqt5-opengl-dev:
+  osx:
+    homebrew:
+      packages: []
+libqt5-widgets:
+  osx:
+    homebrew:
+      packages: []
+qt5-qmake:
+  osx:
+    homebrew:
+      packages: []
+qtbase5-dev:
+  osx:
+    homebrew:
+      packages: []
+python-qt5-bindings:
+  osx:
+    homebrew:
+      packages: [sip]
+python-qt5-bindings-gl:
+  osx:
+    homebrew:
+      packages: [sip]
+python-qt5-bindings-webkit:
+  osx:
+    homebrew:
+      packages: [sip]
+
