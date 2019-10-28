@@ -104,7 +104,7 @@ if [ ! -f /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list ]; then
     sudo sh -c "echo 'yaml file://$(pwd)/rosdeps.yaml osx' > /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
 fi
 rosdep update 2>/dev/null
-while [ $? -ne 0 ]
+while [ $? -ne 0 ];
 do
 rosdep update 2>/dev/null
 done
