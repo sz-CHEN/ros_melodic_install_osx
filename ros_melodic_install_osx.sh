@@ -86,10 +86,10 @@ for f in $result[*]; do
     cp $(pwd)"/patch/"$f $(pwd)"/src"$f
 done
 
-export PATH=/usr/local/opt/qt/bin:$PATH
-export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
-export CPATH=/usr/local/include/harfbuzz:$CPATH
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+export PATH=$(brew --prefix qt)/bin:$PATH
+export LIBRARY_PATH=$(brew --prefix)/lib:$LIBRARY_PATH
+export CPATH=$(brew --prefix harfbuzz)/include/harfbuzz:$CPATH
+export PKG_CONFIG_PATH=$(brew --prefix openssl@1.1)/lib/pkgconfig
 
 sudo rm -rf /opt/ros/melodic
 sudo mkdir -p /opt/ros/melodic
@@ -101,4 +101,4 @@ sudo chown $USER /opt/ros/melodic
     -DCMAKE_FIND_FRAMEWORK=LAST \
     -DPYTHON_EXECUTABLE=$(which python3) \
     -DPYTHON_LIBRARY=$(python3 -c "import sys; print(sys.prefix)")/lib/libpython3.7.dylib \
-    -DPYTHON_INCLUDE_DIR=$(python3 -c "import sys; print(sys.prefix)")/include/python3.7m -DGTEST_SRC_DIR="/usr/local/opt/gtest"
+    -DPYTHON_INCLUDE_DIR=$(python3 -c "import sys; print(sys.prefix)")/include/python3.7m -DGTEST_SRC_DIR="$(brew --prefix gtest)"
