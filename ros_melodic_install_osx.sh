@@ -21,7 +21,7 @@ brew tap ros/deps
 # brew update
 
 brew --prefix python@2 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install python@2
 fi
 mkdir -p ~/Library/Python/2.7/lib/python/site-packages
@@ -30,7 +30,7 @@ if [ ! -f ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth ]; then
 fi
 
 brew --prefix python 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install python
 fi
 mkdir -p ~/Library/Python/3.7/lib/python/site-packages
@@ -40,52 +40,52 @@ fi
 
 brew cask install xquartz
 brew --prefix gpgme 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install gpgme
 fi
 # brew install gpgme
 brew --prefix poco 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install poco
 fi
 # brew install poco
 brew --prefix gtest 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install gtest
 fi
 # brew install gtest
 brew --prefix lz4 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install lz4
 fi
 # brew install lz4
 brew --prefix fltk 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install fltk
 fi
 # brew install fltk
 brew --prefix boost-python3 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install boost-python3
 fi
 # brew install boost-python3
 brew --prefix yaml-cpp 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install yaml-cpp
 fi
 # brew install yaml-cpp
 brew --prefix opencv 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install opencv
 fi
 # brew install opencv
 brew --prefix pcl 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install pcl
 fi
 # brew install pcl
 brew --prefix log4cxx 2>/dev/null
-if [ $? -neq 0 ]; then
+if [ $? -ne 0 ]; then
     brew install log4cxx
 fi
 # brew install log4cxx
@@ -104,7 +104,7 @@ if [ ! -f /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list ]; then
     sudo sh -c "echo 'yaml file://$(pwd)/rosdeps.yaml osx' > /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
 fi
 rosdep update 2>/dev/null
-while [ $? -neq 0 ]
+while [ $? -ne 0 ]
 do
 rosdep update 2>/dev/null
 done
