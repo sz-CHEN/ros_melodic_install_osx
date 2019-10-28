@@ -11,38 +11,84 @@ echo "brew tap homebrew/cask"
 brew tap homebrew/cask
 echo "brew tap osrf/simulation"
 brew tap osrf/simulation
+echo "brew tap ros/deps"
 if [ ! -d $(brew --repo)/Library/Taps/ros/homebrew-deps ]; then
-    echo "brew tap ros/deps"
     mkdir -p $(brew --repo)/Library/Taps/ros
     cd $(brew --repo)/Library/Taps/ros
     git clone https://github.com/nagakiran/homebrew-deps.git
-    brew tap ros/deps
 fi
-brew update
+brew tap ros/deps
+# brew update
 
-brew install python@2
+brew --prefix python@2 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install python@2
+fi
 mkdir -p ~/Library/Python/2.7/lib/python/site-packages
 if [ ! -f ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth ]; then
     echo "$(brew --prefix)/lib/python2.7/site-packages" >>~/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 fi
 
-brew install python
+brew --prefix python 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install python
+fi
 mkdir -p ~/Library/Python/3.7/lib/python/site-packages
 if [ ! -f ~/Library/Python/3.7/lib/python/site-packages/homebrew.pth ]; then
     echo "$(brew --prefix)/lib/python3.7/site-packages" >>~/Library/Python/3.7/lib/python/site-packages/homebrew.pth
 fi
 
 brew cask install xquartz
-brew install gpgme
-brew install poco
-brew install gtest
-brew install lz4
-brew install fltk
-brew install boost-python3
-brew install yaml-cpp
-brew install opencv
-brew install pcl
-brew install log4cxx
+brew --prefix gpgme 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install gpgme
+fi
+# brew install gpgme
+brew --prefix poco 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install poco
+fi
+# brew install poco
+brew --prefix gtest 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install gtest
+fi
+# brew install gtest
+brew --prefix lz4 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install lz4
+fi
+# brew install lz4
+brew --prefix fltk 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install fltk
+fi
+# brew install fltk
+brew --prefix boost-python3 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install boost-python3
+fi
+# brew install boost-python3
+brew --prefix yaml-cpp 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install yaml-cpp
+fi
+# brew install yaml-cpp
+brew --prefix opencv 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install opencv
+fi
+# brew install opencv
+brew --prefix pcl 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install pcl
+fi
+# brew install pcl
+brew --prefix log4cxx 2>/dev/null
+if [ $? -neq 0 ]; then
+    brew install log4cxx
+fi
+# brew install log4cxx
 
 sudo -H python2 -m pip install -U pip
 sudo -H python3 -m pip install -U pip
@@ -57,7 +103,11 @@ if [ ! -f /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list ]; then
     echo "This sudo prompt adds the the brewed python rosdep yaml to /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
     sudo sh -c "echo 'yaml file://$(pwd)/rosdeps.yaml osx' > /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
 fi
-rosdep update
+rosdep update 2>/dev/null
+while [ $? -neq 0 ]
+do
+rosdep update 2>/dev/null
+done
 rosinstall_generator desktop_full --rosdistro melodic --deps --wet-only --tar >melodic-desktop-full-wet.rosinstall
 
 wstool init src
