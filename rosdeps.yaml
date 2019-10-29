@@ -14,6 +14,18 @@ python3:
   osx:
     homebrew:
       packages: [python]
+python3-lxml:
+  osx:
+    pip:
+      packages: [lxml]
+python3-pydot:
+  osx:
+    pip:
+      packages: [pydot]
+python3-qt5-bindings:
+  osx:
+    pip:
+      packages: [PyQt5]
 python3-yaml:
   osx:
     pip:
