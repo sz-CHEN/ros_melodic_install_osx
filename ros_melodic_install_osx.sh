@@ -96,6 +96,8 @@ sudo -H python2 -m pip install -U wstool rosdep rosinstall rosinstall_generator 
 sudo -H python3 -m pip install -U wstool rosdep rosinstall rosinstall_generator rospkg catkin-pkg sphinx gnupg pydot
 
 cd $project_path
+echo $(pwd)
+
 if [ ! -d /etc/ros/rosdep/ ]; then
     sudo rosdep init
 fi
@@ -110,7 +112,10 @@ fi
 
 rosinstall_generator desktop_full --rosdistro melodic --deps --wet-only --tar >melodic-desktop-full-wet.rosinstall
 
-wstool init src
+if [ ! -f $(pwd)/src/.rosinstall ]; then
+    wstool init src
+fi
+
 wstool merge file://$(pwd)/melodic-desktop-full-wet.rosinstall
 wstool update
 # wstool init -j8 src melodic-desktop-full-wet.rosinstall
