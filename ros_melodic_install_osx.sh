@@ -104,7 +104,7 @@ if [ ! -f /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list ]; then
     sudo sh -c "echo 'yaml file://$(pwd)/rosdeps.yaml osx' > /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
 fi
 
-if [ ! -f .ros/rosdep/sources.cache/index ]; then
+if [ ! -f ~/.ros/rosdep/sources.cache/index ]; then
     rosdep update
 fi
 
