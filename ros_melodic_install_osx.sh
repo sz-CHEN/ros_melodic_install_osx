@@ -91,14 +91,14 @@ if [ $? -ne 0 ]; then
 fi
 # brew install log4cxx
 
-sudo -H python2 -m pip install -U pip
+# sudo -H python2 -m pip install -U pip
 sudo -H python3 -m pip install -U pip
-sudo -H python2 -m pip install -U wstool rosdep rosinstall rosinstall_generator rospkg catkin-pkg
+# sudo -H python2 -m pip install -U wstool rosdep rosinstall rosinstall_generator rospkg catkin-pkg
 sudo -H python3 -m pip install -U wstool rosdep rosinstall rosinstall_generator rospkg catkin-pkg sphinx gnupg pydot
 
 cd $project_path
 echo $(pwd)
-
+export ROS_PYTHON_VERSION=3
 if [ ! -d /etc/ros/rosdep/ ]; then
     sudo rosdep init
 fi
