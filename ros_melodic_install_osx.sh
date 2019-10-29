@@ -1,5 +1,6 @@
 #!/bin/bash
 
+install_melodic(){
 project_path=$(cd `dirname $0`; pwd)
 set -e
 # Homebrew
@@ -156,3 +157,5 @@ sudo chown $USER /opt/ros/melodic
     -DPYTHON_EXECUTABLE=$(which python3) \
     -DPYTHON_LIBRARY=$(python3 -c "import sys; print(sys.prefix)")/lib/libpython3.7.dylib \
     -DPYTHON_INCLUDE_DIR=$(python3 -c "import sys; print(sys.prefix)")/include/python3.7m -DGTEST_SRC_DIR="$(brew --prefix gtest)"
+}
+install_melodic
