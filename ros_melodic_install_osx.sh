@@ -129,8 +129,9 @@ get_filelist() {
         fi
     done
 }
-cd ~/melodic_catkin_ws/patch/
+cd patch/
 result=($(get_filelist ./))
+cd ../
 for f in $result[*]; do
     echo "patch/"$f"to""src/"$f
     cp $(pwd)"/patch/"$f $(pwd)"/src"$f
