@@ -113,13 +113,11 @@ fi
 rosinstall_generator desktop_full --rosdistro melodic --deps --wet-only --tar >melodic-desktop-full-wet.rosinstall
 
 if [ ! -f $(pwd)/src/.rosinstall ]; then
-    wstool init src
+    wstool init -j8 src melodic-desktop-full-wet.rosinstall
+else
+    wstool update -j 8 -t src
 fi
 
-wstool merge file://$(pwd)/melodic-desktop-full-wet.rosinstall
-wstool update
-# wstool init -j8 src melodic-desktop-full-wet.rosinstall
-# wstool update -j 8 -t src
 rosdep install --from-paths src --ignore-src --rosdistro melodic -y
 
 # patch
