@@ -103,11 +103,11 @@ if [ ! -f /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list ]; then
     echo "This sudo prompt adds the the brewed python rosdep yaml to /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
     sudo sh -c "echo 'yaml file://$(pwd)/rosdeps.yaml osx' > /etc/ros/rosdep/sources.list.d/10-ros-install-osx.list"
 fi
-rosdep update 2>/dev/null
-while [ $? -ne 0 ];
-do
-rosdep update 2>/dev/null
-done
+
+if [ ! -f .ros/rosdep/sources.cache/index ]; then
+    rosdep update
+fi
+
 rosinstall_generator desktop_full --rosdistro melodic --deps --wet-only --tar >melodic-desktop-full-wet.rosinstall
 
 wstool init src
