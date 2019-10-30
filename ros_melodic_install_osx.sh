@@ -111,7 +111,9 @@ if [ ! -f ~/.ros/rosdep/sources.cache/index ]; then
     rosdep update
 fi
 
-rosinstall_generator desktop_full --rosdistro melodic --deps --wet-only --tar >melodic-desktop-full-wet.rosinstall
+if [ ! -f $(pwd)/melodic-desktop-full-wet.rosinstall ]; then
+    rosinstall_generator desktop_full --rosdistro melodic --deps --wet-only --tar >melodic-desktop-full-wet.rosinstall
+fi
 
 if [ ! -f $(pwd)/src/.rosinstall ]; then
     wstool init -j8 src melodic-desktop-full-wet.rosinstall
